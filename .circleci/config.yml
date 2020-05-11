@@ -11,7 +11,13 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+    hi-there:
+      - checkout
+      - run: echo "hi meepis"
 workflows:
     build-and-test:
       jobs:
-        - build-and-test
+        - hi-there 
+        - build-and-test:
+          requires:
+            - hi-there
