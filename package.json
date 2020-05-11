@@ -1,5 +1,4 @@
-{
-    "name": "hyperbolator-api",
+{   "name": "hyperbolator-api",
     "version": "1.0.0",
     "description": "backend for the hyperbolator app",
     "main": "server.js",
