@@ -1,9 +1,18 @@
-{   "name": "hyperbolator-api",
+{
+    "name": "hyperbolator-api",
     "version": "1.0.0",
+    "license": "MIT",
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ]
+    },
     "description": "backend for the hyperbolator app",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "test": "jest --watch *.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
@@ -11,6 +20,11 @@
         "express": "^4.17.1",
         "formidable": "^1.2.2",
         "mammoth": "^1.4.9",
-        "nodemon": "^2.0.3"
+        "nodemon": "^2.0.3",
+        "supertest": "^4.0.2"
+    },
+    "devDependencies": {
+        "jest": "^26.0.1",
+        "node-fetch": "^2.6.0"
     }
 }
