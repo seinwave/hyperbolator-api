@@ -1,5 +1,5 @@
-const handleH0 = (req, res) => {
-    res.send("Hey you level 0 fuckface.");
+const handleH0 = (req, res, file) => {
+    res.send(`It's Britney bitch. (${file.name})`);
 };
 
 module.exports = {
