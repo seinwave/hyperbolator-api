@@ -1,4 +1,4 @@
-const handleH0 = (req, res, file) => {
+const handleH0 = (req, res) => {
     res.send(`It's Britney bitch.`);
 };
 
