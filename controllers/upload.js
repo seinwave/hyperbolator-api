@@ -5,7 +5,7 @@ const download = require('./download')
 
 const handleUpload = (req, res) => {
 new formidable.IncomingForm({uploadDir: './uploads', 
-maxFileSize: 5 * 1024 * 1024, keepExtensions: true})
+maxFileSize: 5 * 1024 * 1024, keepExtensions: true, })
 
     .parse(req, (err, fields, files) => {
         
