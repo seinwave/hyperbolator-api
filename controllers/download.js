@@ -2,15 +2,15 @@ const fs = require('fs')
 const path = require('path')
 
 
-const handleDownload = (req, res) => {
-  console.log(req.body)
-  res.download(req.body.file)
+const handleDownload = (fileToDownload, res) => {
+  
+  // sends file to the user
+  res.download(fileToDownload) 
 
-  fs.readdir('uploads', (err, files) => {
-    if (err) throw err;
-
-    for (const file of files) {
-      fs.unlink(path.join('uploads', file), err => {
+  // deletes it from the uploads directory
+  fs.readdir('uploads', (err, files) => { 
+    for (const fileToDelete of files) {
+      fs.unlink(path.join('uploads', fileToDelete), err => {
         if (err) throw err; 
       })
     }
