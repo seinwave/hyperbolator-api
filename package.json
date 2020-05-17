@@ -27,6 +27,7 @@
         "supertest": "^4.0.2"
     },
     "devDependencies": {
+        "cross-blob": "^1.2.2",
         "jest": "^26.0.1",
         "node-fetch": "^2.6.0"
     }

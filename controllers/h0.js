@@ -19,8 +19,8 @@ fs.readFile(req.body.file, (err, data) => {
     fs.writeFile(req.body.file, newShit, (err) => {
         if (err) throw err;
         dl.handleDownload(req.body.file, res)
-    })
-}) 
+        })
+    }) 
 };
 
 module.exports = {

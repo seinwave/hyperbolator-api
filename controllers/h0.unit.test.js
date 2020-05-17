@@ -1,32 +1,20 @@
 const request = require("supertest");
 const app = require ("../app")
-const download = require("./download")
 
-// const mockResponse = () => {
-//     const res = {};
-//     res.status = jest.fn().mockReturnValue(res);
-//     res.json = jest.fn().mockReturnValue(res);
-//     res.download = jest.fn().mockReturnValue(res)
-//     return res;
-// }
+const mockFile = "text.txt"
 
 describe("h0 route tests", () => {
 
-it("Returns an iconic pop-culture phrase", async () => {
-    const res = await request(app).post("/0");
-    return expect(1).toEqual(1) 
-    });
+    it("Returns a status 0f 200 if we attach a file", async () => {
+        const res = await request(app).post("/0")
+        .send({file: mockFile});
+        return expect(res.status).toBe(200)
+        });
 
-//  it("Fires the download route's main function", async () => {
+    it("Returns an attachment that matches our mockFile", async () => {
+        const res = await request(app).post("/0")
+        .send({file: mockFile});
+        return expect(res.header["content-disposition"]).toBe(`attachment; filename=\"${mockFile}\"`)
+        });
 
-//     const res = mockResponse()
-//     const req = {
-//         headers: { 'Accept': 'application/json',
-//         "Content-Type": 'application/json'},
-//         method: 'POST',
-//         body: JSON.stringify({"File":"FartButt"})
-//     }
-//      const dl = download.handleDownload(req, res);
-//      return expect(dl).toHaveBeenCalled()    
-//    });
 })

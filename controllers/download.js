@@ -5,7 +5,7 @@ const path = require('path')
 const handleDownload = (fileToDownload, res) => {
   
   // sends file to the user
-  res.download(fileToDownload) 
+  res.status(200).download(fileToDownload) 
 
   // deletes it from the uploads directory
   fs.readdir('uploads', (err, files) => { 

@@ -1,0 +1,21 @@
+{"header": 
+{"accept-ranges": "bytes", 
+"access-control-allow-headers": 
+"Origin, X-Requested-With, Content-Type, Accept", 
+"access-control-allow-origin": "*", 
+"cache-control": "public, max-age=0", 
+"connection": "close", 
+"content-disposition": "attachment; filename=\"text.txt\"",
+"content-length": "0", 
+"content-type": "text/plain; charset=UTF-8", 
+"date": "Sun, 17 May 2020 10:29:00 GMT", 
+"etag": "W/\"0-172222e0301\"", 
+"last-modified": "Sun, 17 May 2020 10:29:00 GMT", 
+"x-powered-by": "Express"}, 
+"req": {"data": {"file": "text.txt"}, 
+"headers": {"content-type": "application/json", 
+"user-agent": "node-superagent/3.8.3"}, 
+"method": "POST", 
+"url": "http://127.0.0.1:54070/0"}, 
+"status": 200, 
+"text": ""}
