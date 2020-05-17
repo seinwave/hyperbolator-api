@@ -8,12 +8,14 @@ const handleDownload = (fileToDownload, res) => {
   res.status(200).download(fileToDownload) 
 
   // deletes it from the uploads directory
-  fs.readdir('uploads', (err, files) => { 
+  fs.readdir('uploads', (err, files) => {
+    if (files){ 
     for (const fileToDelete of files) {
       fs.unlink(path.join('uploads', fileToDelete), err => {
         if (err) throw err; 
       })
     }
+  }
   })
 }
 
