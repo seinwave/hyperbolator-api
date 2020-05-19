@@ -3,17 +3,32 @@
 // Trying to get my thoughts together for hyperbolation routes
 // Should put a hyperbolation level as the second argument for every function
 
+const fs = require('fs');
+const nlp = require('compromise');
+nlp.extend(require('compromise-numbers'))
+nlp.extend(require('compromise-adjectives'))
+nlp.extend(require('compromise-sentences'))
 
 const sentenceSplitter = (doc) => {
-    let choppingBlockSentences = doc.sentences().out.asArray;
-    return choppingBlockSentences
+    let content = nlp(doc);
+    let choppingBlockSentences = content.sentences()
+    return choppingBlockSentences.json()
+}
+
+const numberizer = (doc) => {
+    let content = nlp(doc)
+    content.numbers().add(3)
+    return content.text()
 }
 
 
-const comparatorUp = (choppingBlockSentences) => {
-    choppingBlockSentences.map(sentence => {
-        if (number & "more than" in sentence) {
-            number.embiggen.by.undecided.factor
+const comparatorUp = (doc) => {
+    let digits = /\d/
+    sentenceSplitter(doc).map(sentence => {
+        if (sentence.text.includes("more than")) {
+            return sentence.text
+            // editSentence.numbers().add(3)
+            // return editSentence.text()
         }
     })
 }
@@ -101,4 +116,27 @@ const inTheHistoryOfTheWorld = (choppingBlockSentences) => {
 
 // Need a way to inject 'always' and 'never'
 
-// 
+module.exports = {
+    sentenceSplitter,
+    numberizer,
+    comparatorDown,
+    comparatorUp,
+    orgUp,
+    titleUp,
+    peopleUp,
+    adverbifyAdjective,
+    adverbifyVerb,
+    inTheHistoryOfTheWorld
+}
+
+const mockText = 
+"The quick brown fox was named Abraham Lincoln. \
+He had less than 2 friends. \
+But about this, he felt nothing. \
+'Guess I'm meant to be alone,' he said to himself. \
+It has been more than nine days since he spoke to his ridiculous mother. \
+It's just exhausting. \
+He picked 9 blueberries. \
+They were luscious. \
+He ate them."
+sentenceSplitter(mockText)

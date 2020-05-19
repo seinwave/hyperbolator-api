@@ -19,6 +19,7 @@
         "compromise": "^13.2.0",
         "compromise-adjectives": "0.0.5",
         "compromise-numbers": "^1.0.0",
+        "compromise-sentences": "0.0.5",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "formidable": "^1.2.2",
