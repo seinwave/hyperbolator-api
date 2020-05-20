@@ -1,8 +1,3 @@
-
-// This is all pseudocode
-// Trying to get my thoughts together for hyperbolation routes
-// Should put a hyperbolation level as the second argument for every function
-
 const fs = require('fs');
 const nlp = require('compromise');
 nlp.extend(require('compromise-numbers'))
@@ -23,22 +18,21 @@ const numberizer = (doc) => {
 
 
 const comparatorUp = (doc) => {
-    let digits = /\d/
-    sentenceSplitter(doc).map(sentence => {
-        if (sentence.text.includes("more than")) {
-            return sentence.text
-            // editSentence.numbers().add(3)
-            // return editSentence.text()
-        }
-    })
+    let content = nlp(doc)
+    content
+    .filter(s => {return s.has('more than')})
+    .numbers()
+    .add(3)
+    return content.text()
 }
 
-const comparatorDown = (choppingBlockSentences) => {
-    choppingBlockSentences.map(sentence => {
-        if (number & "less than" || "fewer than" in sentence) {
-            number.ensmallen.by.undecided.factor
-        }
-    })
+const comparatorDown = (doc) => {
+    let content = nlp(doc)
+    content
+    .filter(s => {return s.has('less than')})
+    .numbers()
+    .subtract(2)
+    return content.text()
 }
 
 
@@ -132,6 +126,7 @@ module.exports = {
 const mockText = 
 "The quick brown fox was named Abraham Lincoln. \
 He had less than 2 friends. \
+He has more than ninety friends \
 But about this, he felt nothing. \
 'Guess I'm meant to be alone,' he said to himself. \
 It has been more than nine days since he spoke to his ridiculous mother. \
@@ -139,4 +134,6 @@ It's just exhausting. \
 He picked 9 blueberries. \
 They were luscious. \
 He ate them."
-sentenceSplitter(mockText)
+
+
+comparatorUp(mockText)
