@@ -22,15 +22,23 @@ describe("Mutilator test suite", () => {
     })
 
     it("Embiggens sentences containing 'more than'", () => {
-        const test = mu.comparatorUp(mockText)
-        const resultText = "The quick brown fox was named Abraham Lincoln. He had less than 4 friends. But about this, he felt nothing. 'Guess I'm meant to be alone,' he said to himself. It has been more than twelve days since he spoke to his ridiculous mother. It's just exhausting. He picked 9 blueberries. They were luscious. He ate them."
-        expect(test).toBe(resultText)
+        const mock = "He had more than 9 friends"
+        const test = mu.comparatorUp(mock,1)   // how to test this appropriately? Probably need to do it for each level
+        expect(parseInt(test.match(/(\d+)/)[0])).toBeGreaterThan(9)
     })
 
     it("Ensmallens sentences containing 'less than'", () => {
         const test = mu.comparatorDown(mockText)
         const resultText = "The quick brown fox was named Abraham Lincoln. He had less than 2 friends. But about this, he felt nothing. 'Guess I'm meant to be alone,' he said to himself. It has been more than nine days since he spoke to his ridiculous mother. It's just exhausting. He picked 9 blueberries. They were luscious. He ate them."
         expect(test).toBe(resultText)
+    })
+
+    it("Replaces organizations with more prestigious organizations", () => {
+        const mock = "The quick brown fox was named Abraham Lincoln. He worked at Dow Petroleum."
+        const resultText = "The quick brown fox was named Abraham Lincoln. He worked at Google."
+        const test = mu.orgUp(mock)
+        expect(test).toBe(resultText)
+        
     })
 
 }) 

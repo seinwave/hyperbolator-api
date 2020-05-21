@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const dl = require('./download')
+const mu = require('./mutilators')
 
 const nlp = require('compromise');
 nlp.extend(require('compromise-numbers'))
@@ -12,9 +13,7 @@ fs.readFile(req.body.file, (err, data) => {
     if (err) {
         console.log(err)
     }
-    const content = nlp(data)
-    content.replace(content.nouns(), "0")
-    let newShit = content.text();
+    let newShit = mu.comparatorUp(data, 2);
 
     fs.writeFile(req.body.file, newShit, (err) => {
         if (err) throw err;

@@ -17,12 +17,11 @@ const numberizer = (doc) => {
 }
 
 
-const comparatorUp = (doc) => {
+const comparatorUp = (doc, hfactor) => {
     let content = nlp(doc)
     content
-    .filter(s => {return s.has('more than')})
-    .numbers()
-    .add(3)
+    .filter(s => {return s.has('more than')}) 
+    .forEach(s=> s.numbers().add(1*(Math.floor(Math.random() * Math.pow(4, hfactor)))))
     return content.text()
 }
 
@@ -41,7 +40,7 @@ let prestigeBiz =
 "The Department of Defense", "Apple, Inc", "Berkshire Hathaway", "Y-combinator",
 "IBM", "Alibaba", "Bain", "Netflix", "Disney"]
 
-let prestigeUndergrad = ["Harvard University","Stanford University", "Yale University",  
+let prestigeUndergrad = ["Harvard University", "Stanford University", "Yale University",  
 "Johns Hopkins University", "Cornell University", "Columbia University", "Brown University"]
 
 let prestigeGrad = ["Harvard Law", "Harvard Medical School", "Yale Law", "Yale Medical School",
@@ -49,11 +48,16 @@ let prestigeGrad = ["Harvard Law", "Harvard Medical School", "Yale Law", "Yale M
 
 
 const orgUp = (doc) => {
-    let orgArray = doc.organizations();  // a Compromise function
-    orgArray.map(org => {
-        org.replace.with.more.prestigious.org     // how to make this sensitive to TYPES of orgs?
-    })
+    let content = nlp(doc)
+    let orgs = content.organizations()
+    // let capitals = content.clauses().match('#TitleCase+')
+    // topics = topics.concat(capitals).unique().sort('chron')
+    return content.replace(content.organizations(), "Google").text()
 }
+
+// Did not work for: "University of ${Place}", 
+// "${Place} University", NRC Health, Custom Medical Solutions, Dow Chemical"
+// Need to look at Compromise's source code & suggest a fix
 
 
 let titles = ["big array of common job titles"]
@@ -124,16 +128,11 @@ module.exports = {
 }
 
 const mockText = 
-"The quick brown fox was named Abraham Lincoln. \
-He had less than 2 friends. \
-He has more than ninety friends \
-But about this, he felt nothing. \
-'Guess I'm meant to be alone,' he said to himself. \
-It has been more than nine days since he spoke to his ridiculous mother. \
-It's just exhausting. \
-He picked 9 blueberries. \
-They were luscious. \
-He ate them."
+"The quick brown fox was named Abraham Lincoln. He worked at Dow Petroleum. He had less than 2 friends. He has more than ninety friends But about this, he felt nothing. 'Guess I'm meant to be alone,' he said to himself. It has been more than nine days since he spoke to his ridiculous mother. It's just exhausting. He picked 9 blueberries. They were luscious. He ate them."
 
+const numbers = "More than Twenty one 13 11 ninety nine 1 three 2 four 18"
 
-comparatorUp(mockText)
+const numbersSmall = "Less than Twenty one 13 11 ninety nine 1 three 2 four 18"
+
+comparatorUp(numbers,5)
+comparatorDown(numbers,5)
