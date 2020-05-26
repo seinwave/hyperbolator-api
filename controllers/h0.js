@@ -13,7 +13,7 @@ fs.readFile(req.body.file, (err, data) => {
     if (err) {
         console.log(err)
     }
-    let newShit = mu.comparatorUp(data, 2);
+    let newShit = mu.adverbifyAdjective.adverbifyAdjective(mu.comparatorUp.comparatorUp(data, 5),5);
 
     fs.writeFile(req.body.file, newShit, (err) => {
         if (err) throw err;
