@@ -14,6 +14,7 @@ const h4 = require('./controllers/h4')
 const h5 = require('./controllers/h5')
 const upload = require('./controllers/upload')
 const download = require('./controllers/download')
+const deleter = require('./controllers/delete')
 
 app.use( (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -34,6 +35,7 @@ app.post('/5', (req,res) => {h5.handleH5(req, res)});
 
 app.post('/upload', (req,res) => {upload.handleUpload(req, res)});
 app.post('/download', (req, res) => {download.handleDownload(req,res)});
+app.post('/delete', (req,res) => {deleter.handleDelete(req,res)});
   
 
 module.exports = app;

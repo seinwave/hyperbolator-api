@@ -1,28 +1,36 @@
-const fs = require('fs')
-const path = require('path')
-const dl = require('./download')
+const fs = require('fs');
+const path = require('path');
+const dl = require('./download');
+const mu = require('./mutilators');
+const mammoth = require('mammoth');
 
 const nlp = require('compromise');
-nlp.extend(require('compromise-numbers'))
-nlp.extend(require('compromise-adjectives'))
+nlp.extend(require('compromise-numbers'));
+nlp.extend(require('compromise-adjectives'));
+
 
 const handleH4 = (req, res) => {
 
-    fs.readFile(req.body.file, (err, data) => {
-        if (err) {
-            console.log(err)
-        }
-        const content = nlp(data)
-        content.replace(content.nouns(), "4")
-        let newShit = content.text();
-    
-        fs.writeFile(req.body.file, newShit, (err) => {
-            if (err) throw err;
-            dl.handleDownload(req.body.file, res)
+fs.readFile(req.body.file, (err, data) => {
+    if (err) {
+        console.log(err)
+    }
+
+    mammoth.convertToHtml(data)
+        .then(function(result){
+            var html = result.value;
+            let newShit = mu.adverbifyAdjective
+    .adverbifyAdjective(mu.comparatorUp.comparatorUp(html, 4),4);
+
+    fs.writeFile(req.body.file, newShit, (err) => {
+        if (err) throw err;
+        dl.handleDownload(req.body.file, res)
         })
+        })
+        .done(); 
+    
     }) 
 };
-
 
 module.exports = {
     handleH4
