@@ -5,9 +5,9 @@ const mockFile = "text.txt"
 
 describe("h2 route tests", () => {
 
-    it("Is a very good boy"), async () => {
+    it("Is a very good boy", async () => {
         return expect(1).toEqual(1)
-    }
+    });
 
     // it("Returns a status 0f 200 if we attach a file", async () => {
     //     const res = await request(app).post("/0")
