@@ -5,7 +5,7 @@ const mockFile = "text.txt"
 
 describe("h2 route tests", () => {
 
-    it("Is a very good boy"), () => {
+    it("Is a very good boy"), async () => {
         return expect(1).toEqual(1)
     }
 
