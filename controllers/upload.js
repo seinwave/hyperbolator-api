@@ -1,7 +1,5 @@
 
 const formidable = require('formidable');
-const h0 = require('./h0')
-const download = require('./download')
 
 const handleUpload = (req, res) => {
 new formidable.IncomingForm({uploadDir: './uploads', 
