@@ -20,6 +20,7 @@ const handleDelete = (res) => {
     }
   }),
 
+  // clears download files 
   fs.readdir('downloads', (err, files) => {
     if (err) {
       throw err
@@ -31,7 +32,6 @@ const handleDelete = (res) => {
           if (err) {
             throw err
           }
-          console.log(fileToClear, 'it happened')
         })
       }
     }
