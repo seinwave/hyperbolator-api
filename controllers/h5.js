@@ -44,7 +44,6 @@ fs.readFile(req.body.file, (err, data) => {
 
     else {
 
-        console.log('MAMMOTH FREE ZONE BITCH!')
         let newContent = 
                 mu.adverbifyAdjective
                     .adverbifyAdjective(mu.comparatorUp
