@@ -2,10 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 app.use(cors())
-app.use( (res, next) => {
+app.use( (res) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");;
 })
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
