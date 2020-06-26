@@ -8,7 +8,7 @@ maxFileSize: 5 * 1024 * 1024, keepExtensions: true, })
     .parse(req, (err, fields, files) => {
         
         if (err) {
-            console.error('Error', err)
+            console.log(err)
             throw err
         }
         })

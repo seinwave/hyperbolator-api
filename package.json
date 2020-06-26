@@ -10,8 +10,8 @@
     },
     "description": "backend for the hyperbolator app",
     "main": "server.js",
-    "engines" : {
-        "node" : "12.16",
+    "engines": {
+        "node": "12.16",
         "npm": "6.14.5"
     },
     "scripts": {
