@@ -10,13 +10,13 @@
     },
     "description": "backend for the hyperbolator app",
     "main": "server.js",
-    "scripts": {
-        "start": "node server.js",
-        "test": "jest"
-    },
     "engines" : {
         "node" : "12.16",
         "npm": "6.14.5"
+    },
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "jest"
     },
     "dependencies": {
         "body-parser": "^1.19.0",

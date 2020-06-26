@@ -2,10 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 app.use(cors())
-app.use( (res) => {
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");;
-    res.header('Access-Control-Allow-Origin', '*');
-})
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +16,11 @@ const upload = require('./controllers/upload')
 const download = require('./controllers/download')
 const deleter = require('./controllers/delete')
 
-
+app.use( (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
 
 app.get('/', (req,res) => {
     res.send("Hey fuckface.");
