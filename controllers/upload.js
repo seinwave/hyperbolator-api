@@ -11,12 +11,9 @@ maxFileSize: 5 * 1024 * 1024, keepExtensions: true, })
             console.error('Error', err)
             throw err
         }
-        //console.log('Fields', fields);
-        //console.log('Files', files);
         })
 
     .on('file', (name, file) => {
-        //h0.handleH0(req,res, file);
         res.status(200).send(JSON.stringify(file.path))
         })
 
